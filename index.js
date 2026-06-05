@@ -1,17 +1,22 @@
-const username = document.getElementById("username").value;
-const password = document.getElementById("password").value;
-const submit = document.getElementById("submit");
 const output = document.getElementById("output");
+const form = document.querySelector("form");
 
+const validUsername = "admin";
+const validPassword = "pass123";
 
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-submit.addEventListener( "click", () => {
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
 
-    const name = prompt("Enter your user name", "Guest");
-
-    alert("Welcome back " + name);
-
-    output.textContent = "Welcome back " + name;
+    if (username === validUsername && password === validPassword) {
+        output.textContent = `Welcome back, ${username}!`;
+        alert("Login successful");
+    } else {
+        output.textContent = "Login failed. Try again.";
+        alert("Invalid username or password.");
+    }
 
     
 });
